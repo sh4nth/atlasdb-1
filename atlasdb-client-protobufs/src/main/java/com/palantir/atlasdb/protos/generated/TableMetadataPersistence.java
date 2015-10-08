@@ -53,6 +53,10 @@ public final class TableMetadataPersistence {
      * <code>SIZED_BLOB = 10;</code>
      */
     SIZED_BLOB(9, 10),
+    /**
+     * <code>UUID = 11;</code>
+     */
+    UUID(10, 11),
     ;
 
     /**
@@ -95,6 +99,10 @@ public final class TableMetadataPersistence {
      * <code>SIZED_BLOB = 10;</code>
      */
     public static final int SIZED_BLOB_VALUE = 10;
+    /**
+     * <code>UUID = 11;</code>
+     */
+    public static final int UUID_VALUE = 11;
 
 
     public final int getNumber() { return value; }
@@ -111,6 +119,7 @@ public final class TableMetadataPersistence {
         case 8: return VAR_STRING;
         case 9: return NULLABLE_FIXED_LONG;
         case 10: return SIZED_BLOB;
+        case 11: return UUID;
         default: return null;
       }
     }
@@ -8781,26 +8790,26 @@ public final class TableMetadataPersistence {
       "oto\"\214\001\n\027FileDescriptorTreeProto\022\033\n\023proto" +
       "FileDescriptor\030\001 \002(\014\022T\n\014dependencies\030\002 \003" +
       "(\0132>.com.palantir.atlasdb.protos.generat" +
-      "ed.FileDescriptorTreeProto*\273\001\n\tValueType" +
+      "ed.FileDescriptorTreeProto*\305\001\n\tValueType" +
       "\022\014\n\010VAR_LONG\020\001\022\016\n\nFIXED_LONG\020\002\022\n\n\006STRING" +
       "\020\003\022\010\n\004BLOB\020\004\022\023\n\017VAR_SIGNED_LONG\020\005\022\034\n\030FIX" +
       "ED_LONG_LITTLE_ENDIAN\020\006\022\016\n\nSHA256HASH\020\007\022",
       "\016\n\nVAR_STRING\020\010\022\027\n\023NULLABLE_FIXED_LONG\020\t" +
-      "\022\016\n\nSIZED_BLOB\020\n*#\n\013Compression\022\010\n\004NONE\020" +
-      "\001\022\n\n\006SNAPPY\020\002*N\n\021ColumnValueFormat\022\t\n\005PR" +
-      "OTO\020\001\022\017\n\013PERSISTABLE\020\002\022\016\n\nVALUE_TYPE\020\003\022\r" +
-      "\n\tPERSISTER\020\004*/\n\016ValueByteOrder\022\r\n\tASCEN" +
-      "DING\020\001\022\016\n\nDESCENDING\020\002*\215\001\n\024TableConflict" +
-      "Handler\022\016\n\nIGNORE_ALL\020\001\022\030\n\024RETRY_ON_WRIT" +
-      "E_WRITE\020\002\022\032\n\026RETRY_ON_VALUE_CHANGED\020\003\022\020\n" +
-      "\014SERIALIZABLE\020\004\022\035\n\031RETRY_ON_WRITE_WRITE_" +
-      "CELL\020\005*F\n\rCachePriority\022\013\n\007COLDEST\020\000\022\010\n\004",
-      "COLD\020 \022\010\n\004WARM\020@\022\007\n\003HOT\020`\022\013\n\007HOTTEST\020\177**" +
-      "\n\021PartitionStrategy\022\013\n\007ORDERED\020\000\022\010\n\004HASH" +
-      "\020\001*<\n\rSweepStrategy\022\013\n\007NOTHING\020\000\022\020\n\014CONS" +
-      "ERVATIVE\020\001\022\014\n\010THOROUGH\020\002*;\n\022ExpirationSt" +
-      "rategy\022\t\n\005NEVER\020\000\022\032\n\026INDIVIDUALLY_SPECIF" +
-      "IED\020\001"
+      "\022\016\n\nSIZED_BLOB\020\n\022\010\n\004UUID\020\013*#\n\013Compressio" +
+      "n\022\010\n\004NONE\020\001\022\n\n\006SNAPPY\020\002*N\n\021ColumnValueFo" +
+      "rmat\022\t\n\005PROTO\020\001\022\017\n\013PERSISTABLE\020\002\022\016\n\nVALU" +
+      "E_TYPE\020\003\022\r\n\tPERSISTER\020\004*/\n\016ValueByteOrde" +
+      "r\022\r\n\tASCENDING\020\001\022\016\n\nDESCENDING\020\002*\215\001\n\024Tab" +
+      "leConflictHandler\022\016\n\nIGNORE_ALL\020\001\022\030\n\024RET" +
+      "RY_ON_WRITE_WRITE\020\002\022\032\n\026RETRY_ON_VALUE_CH" +
+      "ANGED\020\003\022\020\n\014SERIALIZABLE\020\004\022\035\n\031RETRY_ON_WR" +
+      "ITE_WRITE_CELL\020\005*F\n\rCachePriority\022\013\n\007COL",
+      "DEST\020\000\022\010\n\004COLD\020 \022\010\n\004WARM\020@\022\007\n\003HOT\020`\022\013\n\007H" +
+      "OTTEST\020\177**\n\021PartitionStrategy\022\013\n\007ORDERED" +
+      "\020\000\022\010\n\004HASH\020\001*<\n\rSweepStrategy\022\013\n\007NOTHING" +
+      "\020\000\022\020\n\014CONSERVATIVE\020\001\022\014\n\010THOROUGH\020\002*;\n\022Ex" +
+      "pirationStrategy\022\t\n\005NEVER\020\000\022\032\n\026INDIVIDUA" +
+      "LLY_SPECIFIED\020\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
